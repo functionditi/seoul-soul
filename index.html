@@ -1,0 +1,51 @@
+
+
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Street View Only</title>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHTCv6I2yKJNhnCy-C2QZ3NhHzLvDu83g&callback=initStreetView"
+      async
+      defer
+    ></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #street-view {
+        height: 100%;
+        width: 100%;
+      }
+
+      #street-view canvas {
+            filter: invert() !important;
+            mix-blend-mode: normal !important;
+            }
+
+    </style>
+  </head>
+  <body>
+    <div id="street-view"></div>
+    <script>
+      function initStreetView() {
+       const location = { lat: 37.4858831, lng: 127.0327635 };
+
+
+        new google.maps.StreetViewPanorama(
+          document.getElementById("street-view"),
+          {
+            position: location,
+            pov: {
+              heading: 34,
+              pitch: 10,
+            },
+            zoom: 1,
+          }
+        );
+      }
+    </script>
+  </body>
+</html>
